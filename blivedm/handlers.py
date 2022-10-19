@@ -11,13 +11,7 @@ __all__ = (
     "BaseHandler",
 )
 
-cmd_log_handler = logging.FileHandler("./log/cmd.log")
-cmd_log_handler.setFormatter(
-    logging.Formatter("[%(asctime)s] - [%(levelname)s] - %(message)s")
-)
 cmd_logger = logging.getLogger("blivedm.cmd")
-cmd_logger.setLevel(logging.DEBUG)
-cmd_logger.addHandler(cmd_log_handler)
 
 # 常见可忽略的cmd
 IGNORED_CMDS = (
@@ -141,54 +135,48 @@ class BaseHandler(HandlerInterface):
         if callback is not None:
             await callback(self, client, command)
 
-    @abstractmethod
     async def _on_heartbeat(
         self, client: client_.BLiveClient, message: models.HeartbeatMessage
     ):
         """
         收到心跳包（人气值）
         """
-        raise NotImplementedError
+        pass
 
-    @abstractmethod
     async def _on_danmaku(
         self, client: client_.BLiveClient, message: models.DanmakuMessage
     ):
         """
         收到弹幕
         """
-        raise NotImplementedError
+        pass
 
-    @abstractmethod
     async def _on_gift(self, client: client_.BLiveClient, message: models.GiftMessage):
         """
         收到礼物
         """
-        raise NotImplementedError
+        pass
 
-    @abstractmethod
     async def _on_buy_guard(
         self, client: client_.BLiveClient, message: models.GuardBuyMessage
     ):
         """
         有人上舰
         """
-        raise NotImplementedError
+        pass
 
-    @abstractmethod
     async def _on_super_chat(
         self, client: client_.BLiveClient, message: models.SuperChatMessage
     ):
         """
         醒目留言
         """
-        raise NotImplementedError
+        pass
 
-    @abstractmethod
     async def _on_super_chat_delete(
         self, client: client_.BLiveClient, message: models.SuperChatDeleteMessage
     ):
         """
         删除醒目留言
         """
-        raise NotImplementedError
+        pass
