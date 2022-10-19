@@ -3,8 +3,9 @@ import argparse
 import asyncio
 import logging
 import os
-import sys
 from typing import Awaitable, Callable, Optional
+from rich.logging import RichHandler
+
 
 import blivedm
 
@@ -134,7 +135,7 @@ if __name__ == "__main__":
     if args.delete:
         os.system(f"rm {LOG_ROOT}/*")
 
-    stdout_handler = logging.StreamHandler(sys.stdout)
+    stdout_handler = RichHandler(show_path=False, show_level=False)
 
     cmd_log_handler = logging.FileHandler("./log/cmd.log")
     cmd_log_handler.setFormatter(
