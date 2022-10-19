@@ -54,7 +54,15 @@ class MyHandler(blivedm.BaseHandler):
             "[Room ID]: %d - [Watches]: %d", client.room_id, command["data"]["num"]
         )
 
+    async def __on_like_info_update(self, client: blivedm.BLiveClient, command: dict):
+        traffic_logger.info(
+            "[Room ID]: %d - [Likes]: %d",
+            client.room_id,
+            command["data"]["click_count"],
+        )
+
     _CMD_CALLBACK_DICT["WATCHED_CHANGE"] = __on_watch_change
+    _CMD_CALLBACK_DICT["LIKE_INFO_V3_UPDATE"] = __on_like_info_update
 
     async def _on_heartbeat(
         self, client: blivedm.BLiveClient, message: blivedm.HeartbeatMessage
@@ -67,7 +75,7 @@ class MyHandler(blivedm.BaseHandler):
         self, client: blivedm.BLiveClient, message: blivedm.DanmakuMessage
     ):
         dm_logger.info(
-            "[Room ID]: %d - [User]: %s - [Chat]: %s",
+            "[Room ID]: %d - [User]: '%s' - [Chat]: '%s'",
             client.room_id,
             message.uname,
             message.msg,
@@ -75,7 +83,7 @@ class MyHandler(blivedm.BaseHandler):
 
     async def _on_gift(self, client: blivedm.BLiveClient, message: blivedm.GiftMessage):
         gift_logger.info(
-            "[Room ID]: %d - [User]: %s - [Gift]: %s - [Number]: %d - [Value]: %d %s",
+            "[Room ID]: %d - [User]: '%s' - [Gift]: '%s' - [Number]: %d - [Value]: %d '%s'",
             client.room_id,
             message.uname,
             message.gift_name,
@@ -88,7 +96,7 @@ class MyHandler(blivedm.BaseHandler):
         self, client: blivedm.BLiveClient, message: blivedm.GuardBuyMessage
     ):
         gift_logger.info(
-            "[Room ID]: %d - [User]: %s - [Guard]: %s",
+            "[Room ID]: %d - [User]: '%s' - [Guard]: '%s'",
             client.room_id,
             message.username,
             message.gift_name,
@@ -98,7 +106,7 @@ class MyHandler(blivedm.BaseHandler):
         self, client: blivedm.BLiveClient, message: blivedm.SuperChatMessage
     ):
         dm_logger.info(
-            "[Room ID]: %d - [User]: %s - [Super chat]: %s",
+            "[Room ID]: %d - [User]: '%s' - [Super chat]: '%s'",
             client.room_id,
             message.uname,
             message.message,
