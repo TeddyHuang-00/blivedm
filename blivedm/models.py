@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
-from typing import *
+from typing import Optional
 
 __all__ = (
-    'HeartbeatMessage',
-    'DanmakuMessage',
-    'GiftMessage',
-    'GuardBuyMessage',
-    'SuperChatMessage',
-    'SuperChatDeleteMessage',
+    "HeartbeatMessage",
+    "DanmakuMessage",
+    "GiftMessage",
+    "GuardBuyMessage",
+    "SuperChatMessage",
+    "SuperChatDeleteMessage",
 )
 
 
@@ -21,14 +21,14 @@ class HeartbeatMessage:
 
     def __init__(
         self,
-        popularity: int = None,
+        popularity: Optional[int] = None,
     ):
-        self.popularity: int = popularity
+        self.popularity: Optional[int] = popularity
 
     @classmethod
     def from_command(cls, data: dict):
         return cls(
-            popularity=data['popularity'],
+            popularity=data["popularity"],
         )
 
 
@@ -79,85 +79,79 @@ class DanmakuMessage:
 
     def __init__(
         self,
-        mode: int = None,
-        font_size: int = None,
-        color: int = None,
-        timestamp: int = None,
-        rnd: int = None,
-        uid_crc32: str = None,
-        msg_type: int = None,
-        bubble: int = None,
-        dm_type: int = None,
-        emoticon_options: Union[dict, str] = None,
-        voice_config: Union[dict, str] = None,
-        mode_info: dict = None,
-
-        msg: str = None,
-
-        uid: int = None,
-        uname: str = None,
-        admin: int = None,
-        vip: int = None,
-        svip: int = None,
-        urank: int = None,
-        mobile_verify: int = None,
-        uname_color: str = None,
-
-        medal_level: str = None,
-        medal_name: str = None,
-        runame: str = None,
-        medal_room_id: int = None,
-        mcolor: int = None,
-        special_medal: str = None,
-
-        user_level: int = None,
-        ulevel_color: int = None,
-        ulevel_rank: str = None,
-
-        old_title: str = None,
-        title: str = None,
-
-        privilege_type: int = None,
+        mode: Optional[int] = None,
+        font_size: Optional[int] = None,
+        color: Optional[int] = None,
+        timestamp: Optional[int] = None,
+        rnd: Optional[int] = None,
+        uid_crc32: Optional[str] = None,
+        msg_type: Optional[int] = None,
+        bubble: Optional[int] = None,
+        dm_type: Optional[int] = None,
+        emoticon_options: Optional[dict | str] = None,
+        voice_config: Optional[dict | str] = None,
+        mode_info: Optional[dict] = None,
+        msg: Optional[str] = None,
+        uid: Optional[int] = None,
+        uname: Optional[str] = None,
+        admin: Optional[int] = None,
+        vip: Optional[int] = None,
+        svip: Optional[int] = None,
+        urank: Optional[int] = None,
+        mobile_verify: Optional[int] = None,
+        uname_color: Optional[str] = None,
+        medal_level: Optional[str] = None,
+        medal_name: Optional[str] = None,
+        runame: Optional[str] = None,
+        medal_room_id: Optional[int] = None,
+        mcolor: Optional[int] = None,
+        special_medal: Optional[str] = None,
+        user_level: Optional[int] = None,
+        ulevel_color: Optional[int] = None,
+        ulevel_rank: Optional[str] = None,
+        old_title: Optional[str] = None,
+        title: Optional[str] = None,
+        privilege_type: Optional[int] = None,
     ):
-        self.mode: int = mode
-        self.font_size: int = font_size
-        self.color: int = color
-        self.timestamp: int = timestamp
-        self.rnd: int = rnd
-        self.uid_crc32: str = uid_crc32
-        self.msg_type: int = msg_type
-        self.bubble: int = bubble
-        self.dm_type: int = dm_type
-        self.emoticon_options: Union[dict, str] = emoticon_options
-        self.voice_config: Union[dict, str] = voice_config
-        self.mode_info: dict = mode_info
+        self.mode = mode
+        self.font_size = font_size
+        self.color = color
+        self.timestamp = timestamp
+        self.rnd = rnd
+        self.uid_crc32 = uid_crc32
+        self.msg_type = msg_type
+        self.bubble = bubble
+        self.dm_type = dm_type
+        self.emoticon_options = emoticon_options
+        self.voice_config = voice_config
+        self.mode_info = mode_info
 
-        self.msg: str = msg
+        self.msg = msg
 
-        self.uid: int = uid
-        self.uname: str = uname
-        self.admin: int = admin
-        self.vip: int = vip
-        self.svip: int = svip
-        self.urank: int = urank
-        self.mobile_verify: int = mobile_verify
-        self.uname_color: str = uname_color
+        self.uid = uid
+        self.uname = uname
+        self.admin = admin
+        self.vip = vip
+        self.svip = svip
+        self.urank = urank
+        self.mobile_verify = mobile_verify
+        self.uname_color = uname_color
 
-        self.medal_level: str = medal_level
-        self.medal_name: str = medal_name
-        self.runame: str = runame
-        self.medal_room_id: int = medal_room_id
-        self.mcolor: int = mcolor
-        self.special_medal: str = special_medal
+        self.medal_level = medal_level
+        self.medal_name = medal_name
+        self.runame = runame
+        self.medal_room_id = medal_room_id
+        self.mcolor = mcolor
+        self.special_medal = special_medal
 
-        self.user_level: int = user_level
-        self.ulevel_color: int = ulevel_color
-        self.ulevel_rank: str = ulevel_rank
+        self.user_level = user_level
+        self.ulevel_color = ulevel_color
+        self.ulevel_rank = ulevel_rank
 
-        self.old_title: str = old_title
-        self.title: str = title
+        self.old_title = old_title
+        self.title = title
 
-        self.privilege_type: int = privilege_type
+        self.privilege_type = privilege_type
 
     @classmethod
     def from_command(cls, info: dict):
@@ -169,12 +163,12 @@ class DanmakuMessage:
             mcolor = info[3][4]
             special_medal = info[3][5]
         else:
-            medal_level = 0
-            medal_name = ''
-            runame = ''
+            medal_level = "0"
+            medal_name = ""
+            runame = ""
             room_id = 0
             mcolor = 0
-            special_medal = 0
+            special_medal = "0"
 
         return cls(
             mode=info[0][1],
@@ -189,9 +183,7 @@ class DanmakuMessage:
             emoticon_options=info[0][13],
             voice_config=info[0][14],
             mode_info=info[0][15],
-
             msg=info[1],
-
             uid=info[2][0],
             uname=info[2][1],
             admin=info[2][2],
@@ -200,21 +192,17 @@ class DanmakuMessage:
             urank=info[2][5],
             mobile_verify=info[2][6],
             uname_color=info[2][7],
-
             medal_level=medal_level,
             medal_name=medal_name,
             runame=runame,
             medal_room_id=room_id,
             mcolor=mcolor,
             special_medal=special_medal,
-
             user_level=info[4][0],
             ulevel_color=info[4][2],
             ulevel_rank=info[4][3],
-
             old_title=info[5][0],
             title=info[5][1],
-
             privilege_type=info[7],
         )
 
@@ -228,9 +216,11 @@ class DanmakuMessage:
         if isinstance(self.emoticon_options, dict):
             return self.emoticon_options
         try:
+            if not self.emoticon_options:
+                return dict()
             return json.loads(self.emoticon_options)
         except (json.JSONDecodeError, TypeError):
-            return {}
+            return dict()
 
     @property
     def voice_config_dict(self) -> dict:
@@ -245,9 +235,11 @@ class DanmakuMessage:
         if isinstance(self.voice_config, dict):
             return self.voice_config
         try:
+            if not self.voice_config:
+                return dict()
             return json.loads(self.voice_config)
         except (json.JSONDecodeError, TypeError):
-            return {}
+            return dict()
 
 
 class GiftMessage:
@@ -273,21 +265,21 @@ class GiftMessage:
 
     def __init__(
         self,
-        gift_name: str = None,
-        num: int = None,
-        uname: str = None,
-        face: str = None,
-        guard_level: int = None,
-        uid: int = None,
-        timestamp: int = None,
-        gift_id: int = None,
-        gift_type: int = None,
-        action: str = None,
-        price: int = None,
-        rnd: str = None,
-        coin_type: str = None,
-        total_coin: int = None,
-        tid: str = None,
+        gift_name: Optional[str] = None,
+        num: Optional[int] = None,
+        uname: Optional[str] = None,
+        face: Optional[str] = None,
+        guard_level: Optional[int] = None,
+        uid: Optional[int] = None,
+        timestamp: Optional[int] = None,
+        gift_id: Optional[int] = None,
+        gift_type: Optional[int] = None,
+        action: Optional[str] = None,
+        price: Optional[int] = None,
+        rnd: Optional[str] = None,
+        coin_type: Optional[str] = None,
+        total_coin: Optional[int] = None,
+        tid: Optional[str] = None,
     ):
         self.gift_name = gift_name
         self.num = num
@@ -308,21 +300,21 @@ class GiftMessage:
     @classmethod
     def from_command(cls, data: dict):
         return cls(
-            gift_name=data['giftName'],
-            num=data['num'],
-            uname=data['uname'],
-            face=data['face'],
-            guard_level=data['guard_level'],
-            uid=data['uid'],
-            timestamp=data['timestamp'],
-            gift_id=data['giftId'],
-            gift_type=data['giftType'],
-            action=data['action'],
-            price=data['price'],
-            rnd=data['rnd'],
-            coin_type=data['coin_type'],
-            total_coin=data['total_coin'],
-            tid=data['tid'],
+            gift_name=data["giftName"],
+            num=data["num"],
+            uname=data["uname"],
+            face=data["face"],
+            guard_level=data["guard_level"],
+            uid=data["uid"],
+            timestamp=data["timestamp"],
+            gift_id=data["giftId"],
+            gift_type=data["giftType"],
+            action=data["action"],
+            price=data["price"],
+            rnd=data["rnd"],
+            coin_type=data["coin_type"],
+            total_coin=data["total_coin"],
+            tid=data["tid"],
         )
 
 
@@ -343,38 +335,38 @@ class GuardBuyMessage:
 
     def __init__(
         self,
-        uid: int = None,
-        username: str = None,
-        guard_level: int = None,
-        num: int = None,
-        price: int = None,
-        gift_id: int = None,
-        gift_name: str = None,
-        start_time: int = None,
-        end_time: int = None,
+        uid: Optional[int] = None,
+        username: Optional[str] = None,
+        guard_level: Optional[int] = None,
+        num: Optional[int] = None,
+        price: Optional[int] = None,
+        gift_id: Optional[int] = None,
+        gift_name: Optional[str] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
     ):
-        self.uid: int = uid
-        self.username: str = username
-        self.guard_level: int = guard_level
-        self.num: int = num
-        self.price: int = price
-        self.gift_id: int = gift_id
-        self.gift_name: str = gift_name
-        self.start_time: int = start_time
-        self.end_time: int = end_time
+        self.uid = uid
+        self.username = username
+        self.guard_level = guard_level
+        self.num = num
+        self.price = price
+        self.gift_id = gift_id
+        self.gift_name = gift_name
+        self.start_time = start_time
+        self.end_time = end_time
 
     @classmethod
     def from_command(cls, data: dict):
         return cls(
-            uid=data['uid'],
-            username=data['username'],
-            guard_level=data['guard_level'],
-            num=data['num'],
-            price=data['price'],
-            gift_id=data['gift_id'],
-            gift_name=data['gift_name'],
-            start_time=data['start_time'],
-            end_time=data['end_time'],
+            uid=data["uid"],
+            username=data["username"],
+            guard_level=data["guard_level"],
+            num=data["num"],
+            price=data["price"],
+            gift_id=data["gift_id"],
+            gift_name=data["gift_name"],
+            start_time=data["start_time"],
+            end_time=data["end_time"],
         )
 
 
@@ -405,68 +397,68 @@ class SuperChatMessage:
 
     def __init__(
         self,
-        price: int = None,
-        message: str = None,
-        message_trans: str = None,
-        start_time: int = None,
-        end_time: int = None,
-        time: int = None,
-        id_: int = None,
-        gift_id: int = None,
-        gift_name: str = None,
-        uid: int = None,
-        uname: str = None,
-        face: str = None,
-        guard_level: int = None,
-        user_level: int = None,
-        background_bottom_color: str = None,
-        background_color: str = None,
-        background_icon: str = None,
-        background_image: str = None,
-        background_price_color: str = None,
+        price: Optional[int] = None,
+        message: Optional[str] = None,
+        message_trans: Optional[str] = None,
+        start_time: Optional[int] = None,
+        end_time: Optional[int] = None,
+        time: Optional[int] = None,
+        id_: Optional[int] = None,
+        gift_id: Optional[int] = None,
+        gift_name: Optional[str] = None,
+        uid: Optional[int] = None,
+        uname: Optional[str] = None,
+        face: Optional[str] = None,
+        guard_level: Optional[int] = None,
+        user_level: Optional[int] = None,
+        background_bottom_color: Optional[str] = None,
+        background_color: Optional[str] = None,
+        background_icon: Optional[str] = None,
+        background_image: Optional[str] = None,
+        background_price_color: Optional[str] = None,
     ):
-        self.price: int = price
-        self.message: str = message
-        self.message_trans: str = message_trans
-        self.start_time: int = start_time
-        self.end_time: int = end_time
-        self.time: int = time
-        self.id: int = id_
-        self.gift_id: int = gift_id
-        self.gift_name: str = gift_name
-        self.uid: int = uid
-        self.uname: str = uname
-        self.face: str = face
-        self.guard_level: int = guard_level
-        self.user_level: int = user_level
-        self.background_bottom_color: str = background_bottom_color
-        self.background_color: str = background_color
-        self.background_icon: str = background_icon
-        self.background_image: str = background_image
-        self.background_price_color: str = background_price_color
+        self.price = price
+        self.message = message
+        self.message_trans = message_trans
+        self.start_time = start_time
+        self.end_time = end_time
+        self.time = time
+        self.id = id_
+        self.gift_id = gift_id
+        self.gift_name = gift_name
+        self.uid = uid
+        self.uname = uname
+        self.face = face
+        self.guard_level = guard_level
+        self.user_level = user_level
+        self.background_bottom_color = background_bottom_color
+        self.background_color = background_color
+        self.background_icon = background_icon
+        self.background_image = background_image
+        self.background_price_color = background_price_color
 
     @classmethod
     def from_command(cls, data: dict):
         return cls(
-            price=data['price'],
-            message=data['message'],
-            message_trans=data['message_trans'],
-            start_time=data['start_time'],
-            end_time=data['end_time'],
-            time=data['time'],
-            id_=data['id'],
-            gift_id=data['gift']['gift_id'],
-            gift_name=data['gift']['gift_name'],
-            uid=data['uid'],
-            uname=data['user_info']['uname'],
-            face=data['user_info']['face'],
-            guard_level=data['user_info']['guard_level'],
-            user_level=data['user_info']['user_level'],
-            background_bottom_color=data['background_bottom_color'],
-            background_color=data['background_color'],
-            background_icon=data['background_icon'],
-            background_image=data['background_image'],
-            background_price_color=data['background_price_color'],
+            price=data["price"],
+            message=data["message"],
+            message_trans=data["message_trans"],
+            start_time=data["start_time"],
+            end_time=data["end_time"],
+            time=data["time"],
+            id_=data["id"],
+            gift_id=data["gift"]["gift_id"],
+            gift_name=data["gift"]["gift_name"],
+            uid=data["uid"],
+            uname=data["user_info"]["uname"],
+            face=data["user_info"]["face"],
+            guard_level=data["user_info"]["guard_level"],
+            user_level=data["user_info"]["user_level"],
+            background_bottom_color=data["background_bottom_color"],
+            background_color=data["background_color"],
+            background_icon=data["background_icon"],
+            background_image=data["background_image"],
+            background_price_color=data["background_price_color"],
         )
 
 
@@ -479,12 +471,12 @@ class SuperChatDeleteMessage:
 
     def __init__(
         self,
-        ids: List[int] = None,
+        ids: Optional[list[int]] = None,
     ):
-        self.ids: List[int] = ids
+        self.ids = ids
 
     @classmethod
     def from_command(cls, data: dict):
         return cls(
-            ids=data['ids'],
+            ids=data["ids"],
         )
